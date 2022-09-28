@@ -1,0 +1,16 @@
+.footer {
+  background-color: #585151;
+  color: #fff;
+  text-align: center;
+  &__div {
+    text-align: justify;
+  }
+  a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+    &:hover {
+      color: #fff;
+    }
+  }
+}

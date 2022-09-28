@@ -1,0 +1,14 @@
+.loading {
+  scale: 3;
+  color: #00000044;
+  animation: rotation infinite 5s linear;
+}
+
+@keyframes rotation {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 360deg;
+  }
+}

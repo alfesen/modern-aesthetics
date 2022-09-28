@@ -1,0 +1,11 @@
+.tag-card {
+  width: max-content;
+  max-width: 20rem;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.4em 0.2em;
+  margin: 0.2em 0;
+  a {
+    padding: 0.1em 0.2em;
+  }
+}

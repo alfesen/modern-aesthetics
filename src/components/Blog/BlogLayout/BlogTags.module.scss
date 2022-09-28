@@ -1,0 +1,41 @@
+.tags {
+  z-index: 0;
+}
+
+.tag-container {
+  transition: padding-top 0.3s;
+  &.offset {
+    padding-top: 1em;
+  }
+}
+
+.blog-tags {
+  text-align: justify;
+  padding: 1em;
+  height: 40vh;
+  max-height: 20rem;
+  overflow: scroll;
+
+  ul {
+    padding: 0;
+    li {
+      list-style: none;
+      a {
+        color: #555;
+        text-decoration: none;
+        transition: text-decoration 0.2;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .authors {
+    text-transform: capitalize;
+  }
+}
+
+a.activeTag {
+  color: rgb(122, 53, 120);
+}

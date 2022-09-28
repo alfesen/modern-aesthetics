@@ -1,0 +1,29 @@
+.featured {
+  text-align: justify;
+  height: max-content;
+  &__title,
+  &__section-title {
+    width: 100%;
+  }
+  &__title,
+  &__content {
+    border-bottom: 1px solid #00000044;
+  }
+  &__section-title {
+    padding-bottom: 0.3em;
+    color: #00000099;
+    border-bottom: 1px solid #00000044;
+  }
+  &__title {
+    padding: 0.5em 0;
+    border-bottom: 3px solid #00000044;
+  }
+  &__content {
+    padding-right: 1em;
+    max-height: 30rem;
+    overflow: auto;
+  }
+  &__date {
+    text-align: right;
+  }
+}

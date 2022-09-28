@@ -1,0 +1,23 @@
+.error {
+  width: 100%;
+  color: #fff;
+  background-color: #0079166f;
+  transition: 0.3s ease-out;
+  transform-origin: left;
+  animation: slide-in 1 .2s;
+
+  p {
+    padding: 0.5em;
+    font-size: 1.2rem;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    scale: 0 1;
+  }
+
+  to {
+    scale: 1 1;
+  }
+}

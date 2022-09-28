@@ -1,0 +1,34 @@
+.root {
+  width: 100%;
+  height: 15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+      hsl(0 50% 50% / 0.2),
+      hsl(0 0% 50% / 0.5) 45% 55%,
+      hsl(0 50% 50% / 0.4)
+    ),
+    linear-gradient(#00000022, #000), url('../../../assets/img/header.jpg');
+  box-shadow: 0 5px 30px #000;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  h1 {
+    color: #fff;
+    font-weight: 400;
+    font-family: 'gill_sansmedium', Calibri, 'Trebuchet MS', sans-serif;
+    text-transform: lowercase;
+    span {
+      font-size: 5rem;
+    }
+  }
+  a {
+    text-decoration: none;
+  }  
+
+  button {
+    margin: 1em;
+  }
+}
