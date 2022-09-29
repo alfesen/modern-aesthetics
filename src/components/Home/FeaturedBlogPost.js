@@ -2,9 +2,9 @@ import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Card, Button, Avatar } from '@mui/material'
 import { Link } from 'react-router-dom'
-
 import { browserName } from 'react-device-detect'
 import s from './FeaturedBlogPost.module.scss'
+import {splitIntoParagraphs} from '../../helpers/splitIntoParagraphs'
 import { sortPosts } from '../../helpers/sortPosts'
 import TagCard from '../UI/TagCard'
 
@@ -42,7 +42,7 @@ const FeaturedBlogPost = props => {
         </div>
       </div>
       <div className={`${s['featured__content']} py-3`}>
-        <p>{lastPost.content}</p>
+        <p>{splitIntoParagraphs(lastPost.content)}</p>
       </div>
       <div
         className={`${s['featured__author']} d-flex w-100 justify-content-between pt-4 align-items-center`}>
