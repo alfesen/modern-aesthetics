@@ -22,9 +22,7 @@ export const fetchRecommendationsData = () => {
           items: recomData,
         })
       )
-    } catch (err) {
-      console.log('err')
-    }
+    } catch (err) {}
     dispatch(recomActions.render())
   }
 }

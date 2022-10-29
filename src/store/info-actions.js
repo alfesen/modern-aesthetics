@@ -22,22 +22,15 @@ export const fetchInfoData = () => {
           items: infoData,
         })
       )
-    } catch (err) {
-      console.log(err)
-    }
+    } catch (err) {}
 
     dispatch(infoActions.render())
   }
 }
 
 export const sendInfoData = async info => {
-  const response =await fetch(
-    `${process.env.REACT_APP_FIREBASE_DATABASE_URL}/info.json`,
-    {
-      method: 'PUT',
-      body: JSON.stringify(info),
-    }
-  )
-
-  console.log(response)
+  await fetch(`${process.env.REACT_APP_FIREBASE_DATABASE_URL}/info.json`, {
+    method: 'PUT',
+    body: JSON.stringify(info),
+  })
 }

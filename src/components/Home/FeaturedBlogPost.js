@@ -1,10 +1,10 @@
+import { Card, Button, Avatar, Typography } from '@mui/material'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { Card, Button, Avatar } from '@mui/material'
 import { Link } from 'react-router-dom'
 import { browserName } from 'react-device-detect'
 import s from './FeaturedBlogPost.module.scss'
-import {splitIntoParagraphs} from '../../helpers/splitIntoParagraphs'
+import { splitIntoParagraphs } from '../../helpers/splitIntoParagraphs'
 import { sortPosts } from '../../helpers/sortPosts'
 import TagCard from '../UI/TagCard'
 
@@ -12,13 +12,16 @@ const FeaturedBlogPost = props => {
   const [tagsAreVisible, setTagsAreVisible] = useState(false)
   const blogItems = useSelector(state => state.blog.items)
 
+  const { className } = props
   const allPosts = []
   blogItems.forEach(item => {
     item.posts.forEach(post => {
       allPosts.push({ ...post, author: item.author, image: item.image })
     })
   })
-  const sorted = sortPosts(browserName === 'Chrome' ? allPosts : allPosts.reverse())
+  const sorted = sortPosts(
+    browserName === 'Chrome' ? allPosts : allPosts.reverse()
+  )
 
   const lastPost = sorted[0]
 
@@ -28,7 +31,7 @@ const FeaturedBlogPost = props => {
 
   return (
     <Card
-      className={`${props.className} ${s.featured} px-4 mb-4 py-4 d-flex flex-column align-items-start`}>
+      className={`${className} ${s.featured} px-4 mb-4 py-4 d-flex flex-column align-items-start`}>
       <h4 className={s['featured__section-title']}>Featured Post</h4>
       <div className={s['featured__title']}>
         <h3>{lastPost.title}</h3>
@@ -42,7 +45,7 @@ const FeaturedBlogPost = props => {
         </div>
       </div>
       <div className={`${s['featured__content']} py-3`}>
-        <p>{splitIntoParagraphs(lastPost.content)}</p>
+        <Typography component={'span'}>{splitIntoParagraphs(lastPost.content)}</Typography>
       </div>
       <div
         className={`${s['featured__author']} d-flex w-100 justify-content-between pt-4 align-items-center`}>
@@ -61,6 +64,6 @@ const FeaturedBlogPost = props => {
       </div>
     </Card>
   )
-} 
+}
 
 export default FeaturedBlogPost

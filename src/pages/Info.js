@@ -8,16 +8,13 @@ import { useSelector } from 'react-redux'
 
 
 const Info = () => {
-  const infoItems = useSelector(state => state.info.items)
-  const isRendered = useSelector(state => state.info.isRendered)
- 
-  
-  const handleEditing = () => {
-    console.log('ye')
+  const info = {
+    infoItems: useSelector(state => state.info.items),
+    isRendered: useSelector(state => state.info.isRendered)
   }
 
-
-  console.log(infoItems)
+  const {infoItems, isRendered} = info
+  
   let content = null
 
   if (infoItems !== null) {
@@ -30,7 +27,6 @@ const Info = () => {
           title={title}
           titleType={titleType}
           content={content}
-          startEditing={handleEditing}
         />
       )
     })

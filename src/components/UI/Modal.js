@@ -8,11 +8,12 @@ const Backdrop = props => {
 }
 
 const Overlay = props => {
+  const { className, children } = props
   return (
     <CardOverflow
       variant='outlined'
-      className={`p-4  ${props.className} ${s.overlay}`}>
-      <div>{props.children}</div>
+      className={`p-4  ${className} ${s.overlay}`}>
+      <div>{children}</div>
     </CardOverflow>
   )
 }
@@ -20,11 +21,13 @@ const Overlay = props => {
 const overlayContainer = document.getElementById('overlay')
 
 const Modal = props => {
+  const { onClose, className, children } = props
+
   return (
     <Fragment>
-      {createPortal(<Backdrop onClose={props.onClose} />, overlayContainer)}
+      {createPortal(<Backdrop onClose={onClose} />, overlayContainer)}
       {createPortal(
-        <Overlay className={props.className}>{props.children}</Overlay>,
+        <Overlay className={className}>{children}</Overlay>,
         overlayContainer
       )}
     </Fragment>

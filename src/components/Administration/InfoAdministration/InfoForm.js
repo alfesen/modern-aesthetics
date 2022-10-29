@@ -8,6 +8,8 @@ import FormTooltip from '../../UI/FormTooltip'
 import { v4 as uuidv4 } from 'uuid'
 
 const InfoForm = props => {
+  const { onClick, id } = props
+
   const [title, setTitle] = useState('')
   const [titleType, setTitleType] = useState('none')
   const [content, setContent] = useState('')
@@ -21,7 +23,7 @@ const InfoForm = props => {
     setTitle(e.target.value)
   }
 
-  const handleTitleType = (e) => {
+  const handleTitleType = e => {
     setTitleType(e.target.value)
   }
 
@@ -37,15 +39,20 @@ const InfoForm = props => {
   }
 
   const handleCancel = () => {
-    if (props.onClick) {
-      props.onClick()
+    if (onClick) {
+      onClick()
     } else history.push('/admin')
   }
 
   const handleAddItem = e => {
     e.preventDefault()
     dispatch(
-      infoActions.addContent({ title: title, titleType: titleType, content: content, id: uuidv4() })
+      infoActions.addContent({
+        title: title,
+        titleType: titleType,
+        content: content,
+        id: uuidv4(),
+      })
     )
     setTitle('')
     setContent('')
@@ -56,13 +63,13 @@ const InfoForm = props => {
     e.preventDefault()
     dispatch(
       infoActions.updateContent({
-        id: props.id,
+        id: id,
         title: title,
         titleType: titleType,
         content: content,
       })
     )
-    props.onClick()
+    onClick()
   }
 
   return (
@@ -80,8 +87,14 @@ const InfoForm = props => {
           onChange={handleTitle}
           value={title || props.title}
         />
-        <Select sx={{ minWidth: 120, marginLeft: 1 }} label='Type' value={!titleType ? 'none' : titleType} onChange={handleTitleType}>
-          <MenuItem value='none' disabled default>Choose type</MenuItem>
+        <Select
+          sx={{ minWidth: 120, marginLeft: 1 }}
+          label='Type'
+          value={!titleType ? 'none' : titleType}
+          onChange={handleTitleType}>
+          <MenuItem value='none' disabled default>
+            Choose type
+          </MenuItem>
           <MenuItem value='h3'>Section Title</MenuItem>
           <MenuItem value='h4'>Subsection Title</MenuItem>
         </Select>

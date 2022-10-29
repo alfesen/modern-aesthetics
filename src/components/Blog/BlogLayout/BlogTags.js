@@ -4,6 +4,9 @@ import TagList from '../../UI/TagList'
 import { useSelector } from 'react-redux'
 
 const BlogTags = props => {
+
+  const {onTagChoice, offset} = props
+
   const blogItems = useSelector(state => state.blog.items)
   
   const tagsArr = blogItems.map(item => {
@@ -29,7 +32,7 @@ const BlogTags = props => {
 
   const renderAuthors = uniqueAuthors.map(author => {
     const choiceHandler = () => {
-      props.onTagChoice(author)
+      onTagChoice(author)
     }
     return (
       <TagLink
@@ -47,10 +50,10 @@ const BlogTags = props => {
     <div className={`${s.tags} d-flex col-md-4 flex-column justify-content-around justify-content-md-start mb-2 mx-md-3 `}>
       <div
         className={`${s['tag-container']} ${
-          props.offset > 360 && `sticky-top ${s.offset}`
+          offset > 360 && `sticky-top ${s.offset}`
         }  flex-column justify-content-around  flex-sm-row flex-md-column`}>
         <TagList
-          offset={props.offset}
+          offset={offset}
           label='Tags'
           className={` mb-3 text-center ${s['blog-tags']}`}
           allTags='All tags'
@@ -58,7 +61,7 @@ const BlogTags = props => {
         />
 
         <TagList
-          offset={props.offset}
+          offset={offset}
           label='Authors'
           className={` mb-2 text-center ${s['blog-tags']} authors `}
           allTags='All authors'

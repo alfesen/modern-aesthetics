@@ -18,13 +18,11 @@ const RecListItem = props => {
   }
 
   return (
-    <ImageListItem
-      id={id}
-      key={id}
-      variant='masonry'
-      className={`${s.box}`}>
+    <ImageListItem id={id} key={id} variant='masonry' className={`${s.box}`}>
       <img src={image} alt={title} />
-      <div onDoubleClick={likeButtonHandler} className={`${s.description} text-center`}>
+      <div
+        onDoubleClick={likeButtonHandler}
+        className={`${s.description} text-center`}>
         <div
           onClick={likeButtonHandler}
           className={`${s.button} ${thisItem.isLiked ? s.active : ''}`}>

@@ -4,7 +4,7 @@ import RecListItem from './RecListItem'
 import { Card, ImageList, useMediaQuery, useTheme } from '@mui/material'
 import CategorySelect from './CategorySelect'
 
-const RecList = props => {
+const RecList = () => {
   const recomItems = useSelector(state => state.recommendations.items)
   const [filteredItems, setFilteredItems] = useState(recomItems)
   const theme = useTheme()

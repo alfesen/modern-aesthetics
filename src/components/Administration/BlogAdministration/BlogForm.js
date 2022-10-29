@@ -17,7 +17,7 @@ import FormTooltip from '../../UI/FormTooltip'
 import Error from '../../UI/Error'
 import Success from '../../UI/Success'
 
-const BlogForm = props => {
+const BlogForm = () => {
   const [author, setAuthor] = useState('')
   const [authorId, setAuthorId] = useState('')
   const [title, setTitle] = useState('')

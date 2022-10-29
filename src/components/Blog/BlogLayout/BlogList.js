@@ -5,7 +5,7 @@ import { sortPosts } from '../../../helpers/sortPosts'
 import { useSelector } from 'react-redux'
 import { browserName } from 'react-device-detect'
 
-const BlogList = props => {
+const BlogList = () => {
   const location = useLocation()
   const queryParams = new URLSearchParams(location.search)
 

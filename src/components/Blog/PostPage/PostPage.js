@@ -1,11 +1,12 @@
 import { Fragment } from 'react'
 import { useLocation, Link } from 'react-router-dom'
-import { Card, Avatar } from '@mui/material'
+import { Card, Avatar, Typography } from '@mui/material'
 import { useSelector } from 'react-redux'
 import s from './PostPage.module.scss'
 import { splitIntoParagraphs } from '../../../helpers/splitIntoParagraphs'
 
-const PostPage = props => {
+const PostPage = () => {
+
   const blogItems = useSelector(state => state.blog.items)
   const isRendered = useSelector(state => state.blog.blogIsRendered)
   const location = useLocation()
@@ -36,7 +37,9 @@ const PostPage = props => {
             <Link to={`blog?author=${post.author}`}>{post.author}</Link>
           </div>
           <div className={`${s.post__content} px-md-3 `}>
-            <p>{splitIntoParagraphs(post.content)}</p>
+            <Typography component={'span'}>
+              {splitIntoParagraphs(post.content)}
+            </Typography>
           </div>
           <p className={s.post__signature}>
             &copy; This article was written by {post.author} {post.date}

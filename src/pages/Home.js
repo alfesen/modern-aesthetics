@@ -12,12 +12,14 @@ const Home = () => {
     info: useSelector(state => state.info.isRendered),
   }
 
+  const {blog, recommendations, info} = isRendered
+
   return (
     <Container className='row d-flex justify-content-around'>
       <PageTitle title='Feel at home' />
-      {isRendered.info && <About />}
-      {isRendered.blog && <FeaturedBlogPost className='col-lg-4' />}
-      {isRendered.recommendations && (
+      {info && <About />}
+      {blog && <FeaturedBlogPost className='col-lg-4' />}
+      {recommendations && (
         <RandomRecommendations className='col-lg-7 p-3' />
       )}
     </Container>

@@ -1,17 +1,16 @@
-import { Fragment} from 'react'
-import { Select,  InputLabel, MenuItem } from '@mui/material'
+import { Fragment } from 'react'
+import { Select, InputLabel, MenuItem } from '@mui/material'
 
 const BlogAuthorSelect = props => {
+  const { items, author } = props
 
-  const authorOptions = props.items.map(item => {
+  const authorOptions = items.map(item => {
     return (
       <MenuItem key={item.id} value={item.author} id={item.id}>
         {item.author}
       </MenuItem>
     )
   })
-
-  const author = props.author
 
   return (
     <Fragment>

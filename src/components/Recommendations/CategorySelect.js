@@ -5,14 +5,16 @@ import { NativeSelect } from '@mui/material'
 const CategorySelect = props => {
   const [category, setCategory] = useState('any')
 
+  const {items, onChange} = props
+
   const categories = []
 
-  props.items.forEach(item => categories.push(item.category))
+  items.forEach(item => categories.push(item.category))
 
   const uniqueCategories = [...new Set(categories)]
 
   const handleChange = e => {
-    props.onChange(e.target.value)
+    onChange(e.target.value)
     setCategory(e.target.value)
   }
 

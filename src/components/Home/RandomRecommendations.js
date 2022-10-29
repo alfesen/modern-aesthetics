@@ -6,6 +6,8 @@ import RecListItem from '../Recommendations/RecListItem'
 const RandomRecommendations = props => {
   const [randomCards, setRandomCards] = useState([])
 
+  const { className } = props
+
   const recommendations = useSelector(state => state.recommendations.items)
 
   useEffect(() => {
@@ -65,8 +67,8 @@ const RandomRecommendations = props => {
   })
 
   return (
-    <Card className={props.className}>
-      <ImageList cols={match}   sx={{ height: '100%' }}>
+    <Card className={className}>
+      <ImageList cols={match} sx={{ height: '100%' }}>
         {items}
       </ImageList>
     </Card>

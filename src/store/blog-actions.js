@@ -22,20 +22,15 @@ export const fetchBlogData = () => {
           items: blogData,
         })
       )
-    } catch (err) {
-      console.log(err)
-    }
+    } catch (err) {}
 
     dispatch(blogActions.render())
   }
 }
 
 export const sendBlogData = async blog => {
-  await fetch(
-    `${process.env.REACT_APP_FIREBASE_DATABASE_URL}/blogItems.json`,
-    {
-      method: 'PUT',
-      body: JSON.stringify(blog),
-    }
-  )
+  await fetch(`${process.env.REACT_APP_FIREBASE_DATABASE_URL}/blogItems.json`, {
+    method: 'PUT',
+    body: JSON.stringify(blog),
+  })
 }

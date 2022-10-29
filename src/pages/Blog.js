@@ -8,7 +8,7 @@ import AuthorModal from '../components/Blog/AuthorModal/AuthorModal'
 import Loading from '../components/UI/Loading'
 import { useSelector } from 'react-redux'
 
-const Blog = props => {
+const Blog = () => {
   const [modalIsVisible, setModalIsVisible] = useState(false)
   const [author, setAuthor] = useState('')
   const [authorData, setAuthorData] = useState([])
@@ -56,7 +56,7 @@ const Blog = props => {
 
       <section className='container'>
         <Route path='/blog/post'>
-           <PostPage />
+          <PostPage />
         </Route>
 
         <div className='row'>
@@ -64,11 +64,7 @@ const Blog = props => {
           <div className='d-flex flex-column-reverse flex-md-row align-items-between'>
             <BlogList className='' />
             {!onPostPage && blogIsRendered && (
-              <BlogTags
-                offset={offset}
-                
-                onTagChoice={modalHandler}
-              />
+              <BlogTags offset={offset} onTagChoice={modalHandler} />
             )}
           </div>
         </div>

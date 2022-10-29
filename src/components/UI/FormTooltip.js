@@ -1,9 +1,11 @@
 import { Button } from '@mui/material'
 
 const FormTooltip = props => {
+  const { onCancel } = props
+
   return (
     <div className='d-flex justify-content-end'>
-      <Button onClick={props.onCancel} className='mx-3' variant='outlined'>
+      <Button onClick={onCancel} className='mx-3' variant='outlined'>
         Cancel
       </Button>
       <Button type='submit' variant='contained' color='success'>
