@@ -34,8 +34,6 @@ const Info = () => {
     content = <p>No info yet</p>
   }
 
-  console.log(content)
-
   return (
     <Container>
       <PageTitle title='Info' />

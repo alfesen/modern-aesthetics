@@ -3,6 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom'
 import { useEffect, lazy, Suspense } from 'react'
 import Loading from './components/UI/Loading'
 import MainLayout from './components/Layout/MainLayout'
+import NotFound from './components/UI/NotFound'
 
 import PrivateRoute from './helpers/PrivateRoute'
 import { useDispatch } from 'react-redux'
@@ -61,6 +62,10 @@ const App = () => {
               <Info />
             </Route>
           </Switch>
+          <Route path='*' exact={true}>
+            
+            <NotFound />
+          </Route>
         </Suspense>
       </MainLayout>
     </div>
