@@ -61,11 +61,10 @@ const App = () => {
             <Route path='/info' exact>
               <Info />
             </Route>
+            <Route path='*' exact={true}>
+              <NotFound />
+            </Route>
           </Switch>
-          <Route path='*' exact={true}>
-            
-            <NotFound />
-          </Route>
         </Suspense>
       </MainLayout>
     </div>

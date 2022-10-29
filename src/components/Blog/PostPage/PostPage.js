@@ -3,6 +3,7 @@ import { useLocation, Link } from 'react-router-dom'
 import { Card, Avatar, Typography } from '@mui/material'
 import { useSelector } from 'react-redux'
 import s from './PostPage.module.scss'
+import NotFound from '../../UI/NotFound'
 import { splitIntoParagraphs } from '../../../helpers/splitIntoParagraphs'
 
 const PostPage = () => {
@@ -26,7 +27,7 @@ const PostPage = () => {
 
   return (
     <Fragment>
-      {post && (
+      {post ? (
         <Card className={`p-5 text-center`}>
           {isRendered && (
             <Fragment>
@@ -48,6 +49,8 @@ const PostPage = () => {
             </Fragment>
           )}
         </Card>
+      ) : (
+        <NotFound />
       )}
     </Fragment>
   )
