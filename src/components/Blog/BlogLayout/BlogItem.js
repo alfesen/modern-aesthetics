@@ -1,4 +1,4 @@
-import { useState, useEffect, Fragment } from 'react'
+import { useState, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import s from './BlogItem.module.scss'
 import Card from '@mui/material/Card'
