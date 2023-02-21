@@ -1,4 +1,4 @@
-import { useState, Fragment, useEffect } from 'react'
+import { useState, Fragment } from 'react'
 import {
   Card,
   TextField,
@@ -39,8 +39,6 @@ const BlogForm = () => {
     setNewAuthor(!newAuthor)
     setIsError(false)
   }
-
-  useEffect(() => {}, [])
 
   const handleChangeAuthor = e => {
     setAuthor(e.target.value)
