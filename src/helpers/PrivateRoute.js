@@ -1,7 +1,5 @@
-import { useState, useEffect } from 'react'
 import { Route, Redirect } from 'react-router-dom'
-import { auth } from '../firebase'
-import { onAuthStateChanged } from 'firebase/auth'
+import useAuth from '../hooks/useAuth'
 
 const PrivateRoute = ({
   component: Component,
@@ -10,15 +8,7 @@ const PrivateRoute = ({
   path,
   ...rest
 }) => {
-  const [user, setUser] = useState({})
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, currentUser => {
-      setUser(currentUser)
-    })
-
-    return unsubscribe
-  }, [])
+  const user = useAuth()
 
   return (
     <Route
