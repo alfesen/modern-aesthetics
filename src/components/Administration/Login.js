@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import useAuth from '../../hooks/useAuth'
 import { Button, Card, TextField, Alert, FormControl } from '@mui/material'
-import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'
+import { signInWithEmailAndPassword } from 'firebase/auth'
 import { useHistory } from 'react-router-dom'
 import { auth } from '../../firebase'
 const Login = () => {
@@ -8,17 +9,8 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const [error, setError] = useState(false)
   const [loading, setLoading] = useState(false)
-
-  const [user, setUser] = useState({})
-
+  const user = useAuth()
   const history = useHistory()
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, currentUser => {
-      setUser(currentUser)
-    })
-
-    return unsubscribe
-  }, [])
 
   const emailHandler = e => {
     setEmail(e.target.value)

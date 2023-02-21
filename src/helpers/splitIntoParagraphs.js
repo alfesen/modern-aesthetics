@@ -1,12 +1,6 @@
 export const splitIntoParagraphs = initialContent => {
   let content = ''
-  if (!initialContent) {
-    throw new Error('No initial content')
-  }
-  if (
-    typeof initialContent !== 'string' ||
-    initialContent.trim().length === 0
-  ) {
+  if (typeof initialContent !== 'string') {
     throw new Error('Initial content must be a valid string')
   }
   if (!initialContent.includes('\n')) {

@@ -1,28 +1,19 @@
-import { Fragment, useState, useEffect } from 'react'
+import { Fragment, useState } from 'react'
 import { Button, Alert, AlertTitle } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
 import EditIcon from '@mui/icons-material/Edit'
 import { splitIntoParagraphs } from '../../helpers/splitIntoParagraphs'
 import { useDispatch } from 'react-redux'
 import { infoActions } from '../../store/info-slice'
-import { auth } from '../../firebase'
-import { onAuthStateChanged } from 'firebase/auth'
 import InfoForm from '../Administration/InfoAdministration/InfoForm'
+import useAuth from '../../hooks/useAuth'
 
 const InfoItem = props => {
   const [isAlert, setIsAlert] = useState(false)
   const [isEditing, setIsEditing] = useState(false)
-  const [user, setUser] = useState({})
+  const user = useAuth()
 
   const dispatch = useDispatch()
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, currentUser => {
-      setUser(currentUser)
-    })
-
-    return unsubscribe
-  }, [])
 
   const { id, title, content, titleType } = props
   const itemContent = splitIntoParagraphs(content)

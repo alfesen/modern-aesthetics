@@ -1,4 +1,4 @@
-import { useState, useEffect, Fragment } from 'react'
+import { useState, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import s from './BlogItem.module.scss'
 import Card from '@mui/material/Card'
@@ -7,30 +7,22 @@ import CloseIcon from '@mui/icons-material/Close'
 import { Button, Avatar, Alert, AlertTitle, Typography } from '@mui/material'
 import { useDispatch } from 'react-redux'
 import { blogActions } from '../../../store/blog-slice'
-import { auth } from '../../../firebase'
-import { onAuthStateChanged } from 'firebase/auth'
+import useAuth from '../../../hooks/useAuth'
 import { splitIntoParagraphs } from '../../../helpers/splitIntoParagraphs'
 
 const BlogItem = props => {
-
-  const {className, id, title, author, content, tags, avatar, date} = props
+  const { className, id, title, author, content, tags, avatar, date } = props
 
   const [tagsAreVisible, setTagsAreVisible] = useState(false)
   const [isAlert, setIsAlert] = useState(false)
-  const [user, setUser] = useState({})
+
+  const user = useAuth()
+
   const dispatch = useDispatch()
 
   const toggleTags = () => {
     setTagsAreVisible(!tagsAreVisible)
   }
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, currentUser => {
-      setUser(currentUser)
-    })
-
-    return unsubscribe
-  }, [])
 
   const showAlert = () => {
     setIsAlert(true)
@@ -41,9 +33,7 @@ const BlogItem = props => {
   }
 
   const removeItem = () => {
-    dispatch(
-      blogActions.removeItemFromBlog({ id: id, author: author })
-    )
+    dispatch(blogActions.removeItemFromBlog({ id: id, author: author }))
     closeAlert()
   }
 

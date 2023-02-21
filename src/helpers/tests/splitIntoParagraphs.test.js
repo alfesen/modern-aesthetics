@@ -18,12 +18,6 @@ describe('splitIntoParagraphs', () => {
     const res = () => splitIntoParagraphs(val)
     expect(res).toThrow('must be a valid string')
   })
-
-  it('should throw an error if provided argument is a long string of blanc', () => {
-    const str = '         '
-    const res = () => splitIntoParagraphs(str)
-    expect(res).toThrow()
-  })
 })
 
 describe('splitContent', () => {
