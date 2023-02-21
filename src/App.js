@@ -24,7 +24,6 @@ const App = () => {
   useEffect(() => {
     dispatch(fetchInfoData())
   }, [dispatch])
-
   useEffect(() => {
     dispatch(fetchBlogData())
   }, [dispatch])
