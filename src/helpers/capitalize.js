@@ -1,4 +1,5 @@
 export const capitalize = text => {
+  if (text === '') throw new Error('Nothing to capitalize')
   const words = text.split(' ')
   const titles = []
   words.forEach(word => {
