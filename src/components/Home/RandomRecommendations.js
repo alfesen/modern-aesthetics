@@ -1,19 +1,10 @@
-import { useEffect, useState } from 'react'
 import { Card, ImageList, useMediaQuery, createTheme } from '@mui/material'
-import { useSelector } from 'react-redux'
 import RecListItem from '../Recommendations/RecListItem'
+import useRandomRecommendations from '../../hooks/useRandomRecommendations'
 
 const RandomRecommendations = props => {
-  const [randomCards, setRandomCards] = useState([])
-
   const { className } = props
-
-  const recommendations = useSelector(state => state.recommendations.items)
-
-  useEffect(() => {
-    setRandomCards([...recommendations].sort(() => 0.5 - Math.random()))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  const randomCards = useRandomRecommendations()
 
   const theme = createTheme({
     breakpoints: {
